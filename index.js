@@ -12,7 +12,7 @@ const bot = new TelegramBot(botToken, { polling: true });
 
 app.use(express.json());
 
-app.post("/send-message", (req, res) => {
+app.post("/", (req, res) => {
   const { phoneNumber, name } = req.body;
 
   const message = `Заказан звонок на номер: +${phoneNumber}, имя: ${name? name : "без имени"}`;
