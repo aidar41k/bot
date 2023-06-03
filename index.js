@@ -2,7 +2,6 @@ const express = require("express");
 const TelegramBot = require("node-telegram-bot-api");
 const cors = require('cors')
 const botToken = "5924398361:AAEzfkyVFE5oudo-O294yeRJhzMV0IqufB8"; // Замените на токен вашего бота
-const PORT = 3001
 const app = express();
 app.use(cors())
 app.use(express.json());
@@ -28,6 +27,6 @@ app.post("/", (req, res) => {
     });
 });
 
-app.listen(PORT, () => {
-  console.log("Server started on port", PORT);
+app.listen(() => {
+  console.log("Server started on port");
 });
