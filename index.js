@@ -4,7 +4,7 @@ const cors = require('cors')
 const botToken = "5924398361:AAEzfkyVFE5oudo-O294yeRJhzMV0IqufB8"; // Замените на токен вашего бота
 const PORT = 3001
 const app = express();
-app.use(cors({credentials: true, origin: "http://localhost:3002"}))
+app.use(cors())
 app.use(express.json());
 app.use(express.urlencoded({extended: true}))
 
