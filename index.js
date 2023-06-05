@@ -1,13 +1,12 @@
 const express = require("express");
 const TelegramBot = require("node-telegram-bot-api");
 const cors = require("cors");
-const botToken = process.env.bot;
+const botToken = "5924398361:AAEzfkyVFE5oudo-O294yeRJhzMV0IqufB8";
 const app = express();
 app.use(cors({ credentials: true, origin: "*" }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 const bot = new TelegramBot(botToken, { polling: true });
-const PORT = 3001;
 app.use(express.json());
 
 app.post("/", (req, res) => {
@@ -37,6 +36,6 @@ app.post("/", (req, res) => {
     });
 });
 
-app.listen(PORT, () => {
+app.listen(() => {
   console.log("Server started");
 });
