@@ -1,13 +1,13 @@
 const express = require("express");
 const TelegramBot = require("node-telegram-bot-api");
 const cors = require("cors");
-const botToken = process.env.botToken;
+const botToken = process.env.bot;
 const app = express();
 app.use(cors({ credentials: true, origin: "*" }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 const bot = new TelegramBot(botToken, { polling: true });
-
+const PORT = 3001;
 app.use(express.json());
 
 app.post("/", (req, res) => {
@@ -19,15 +19,15 @@ app.post("/", (req, res) => {
   cleanType = cleanType || "";
   finishPrice = finishPrice || "";
 
-  //в переменную кладем сообщение. Если данные заполнены то вставляем их + тип данных (имя: Имя, площадь: 20м2 и тд). 
+  //в переменную кладем сообщение. Если данные заполнены то вставляем их + тип данных (имя: Имя, площадь: 20м2 и тд).
   const message = `Заказан звонок на номер: +${phoneNumber}${
-    name &&`, имя: ${name}`
-  }${square &&`, площадь: ${square} м2`}${
-  cleanType &&`, Тип уборки: ${cleanType}`
+    name && `, имя: ${name}`
+  }${square && `, площадь: ${square} м2`}${
+    cleanType && `, Тип уборки: ${cleanType}`
   }${finishPrice && `, цена: ${finishPrice} сом`}`;
 
   bot
-    .sendMessage("-881068248", message) 
+    .sendMessage("-881068248", message)
     .then(() => {
       res.sendStatus(200);
     })
@@ -37,6 +37,6 @@ app.post("/", (req, res) => {
     });
 });
 
-app.listen(() => {
+app.listen(PORT, () => {
   console.log("Server started");
 });
