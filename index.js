@@ -1,7 +1,7 @@
 const express = require("express");
 const TelegramBot = require("node-telegram-bot-api");
 const cors = require("cors");
-const botToken = "5924398361:AAEzfkyVFE5oudo-O294yeRJhzMV0IqufB8";
+const botToken = process.env.botToken;
 const app = express();
 app.use(cors({ credentials: true, origin: "*" }));
 app.use(express.json());
