@@ -3,7 +3,7 @@ const express = require("express");
 const TelegramBot = require("node-telegram-bot-api");
 const cors = require("cors");
 const app = express();
-const botToken = process.env.bot;
+const botToken = process.env.BOT_KEY;
 
 app.use(cors({ credentials: true, origin: "*" }));
 app.use(express.json());
